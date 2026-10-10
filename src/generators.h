@@ -9,7 +9,6 @@ enum class GenAlgo {
 };
 
 void generate_DFS(Maze& maze, int x, int y);
-
-// void generate_Prim(Maze& maze);
+void generate_Prim(Maze& maze, int x, int y);
 
 #endif

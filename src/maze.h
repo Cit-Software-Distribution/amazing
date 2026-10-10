@@ -23,7 +23,7 @@ class Maze {
     Cell& cell(int x, int y) { return grid[y][x]; }
     const Cell& cell(int x, int y) const { return grid[y][x]; }
 
-    void generate(GenAlgo algo, int x = 0, int y = 0);
+    void generate(GenAlgo algo, int start_x = 0, int start_y = 0);
     void to_json();
 };
 
