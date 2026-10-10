@@ -22,7 +22,7 @@ $(BUILD):
 	mkdir -p $@
 
 run: $(TARGET)
-	./$(TARGET)
+	@./$(TARGET)
 
 clean:
 	rm -rf $(BUILD) $(TARGET)

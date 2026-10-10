@@ -1,11 +1,14 @@
-#ifndef MAZE
-#define MAZE 
+#ifndef MAZE_H
+#define MAZE_H
+
 #include <vector>
 #include "generators.h"
 
 struct Cell {
-    bool visited = false;
-    bool walls[4] = {true, true, true, true}; //top, right, bottom, left
+  enum Side { Top, Right, Bottom, Left };
+
+  bool visited = false;
+  bool walls[4] = {true, true, true, true};
 };
 
 class Maze {
@@ -18,9 +21,9 @@ class Maze {
     int get_width() const { return width; }
     int get_height() const { return height; }
     Cell& cell(int x, int y) { return grid[y][x]; }
+    const Cell& cell(int x, int y) const { return grid[y][x]; }
 
     void generate(GenAlgo algo, int x = 0, int y = 0);
-    void display();
     void to_json();
 };
 

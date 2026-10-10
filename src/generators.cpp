@@ -26,3 +26,9 @@ void generate_DFS(Maze& maze, int x, int y) {
         }
     }
 }
+
+// void generate_Prim(Maze& maze, int x, int y) {
+//   maze.cell(x,y).visited = true;
+//   std::vector<int> dirs = {0,1,2,3};
+//
+// }
