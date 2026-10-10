@@ -4,7 +4,7 @@
 
 int main() {
     Maze maze(15, 15);
-    maze.generate(GenAlgo::Prim);
+    maze.generate(GenAlgo::DFS);
     print(maze, OutputStyle::Block);
     return 0;
 }

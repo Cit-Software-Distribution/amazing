@@ -74,3 +74,37 @@ void generate_Prim(Maze& maze, int x, int y) {
         }
     }
 }
+
+void generate_BinaryTree(Maze& maze) {
+    std::random_device rand_dev;
+    static std::mt19937 rng(rand_dev());
+
+    int width = maze.get_width();
+    int height = maze.get_height();
+
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            maze.cell(x, y).visited = true;
+
+            bool can_go_up = y > 0;
+            bool can_go_right = x < width - 1;
+
+            //top-right corner: nothing to connect
+            if (!can_go_up && !can_go_right) continue;
+
+            //randomly carve up or right; on the top row or right column there is only one option
+            bool go_up;
+            if (!can_go_up) go_up = false;
+            else if (!can_go_right) go_up = true;
+            else go_up = rng() % 2 == 0;
+
+            if (go_up) {
+                maze.cell(x, y).walls[Cell::Top] = false;
+                maze.cell(x, y - 1).walls[Cell::Bottom] = false;
+            } else {
+                maze.cell(x, y).walls[Cell::Right] = false;
+                maze.cell(x + 1, y).walls[Cell::Left] = false;
+            }
+        }
+    }
+}
